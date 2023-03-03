@@ -1,0 +1,8 @@
+{
+    "editor.formatOnType": true,
+    "editor.formatOnSave": true,
+    "omnisharp.organizeImportsOnFormat": true,
+    "csharp.semanticHighlighting.enabled": true,
+    "omnisharp.enableImportCompletion": true,
+    "omnisharp.enableRoslynAnalyzers": true
+}
