@@ -1,0 +1,50 @@
+version: '3.8'
+services:
+  grafana:
+    container_name: grafana_tutorial_metrics
+    image: grafana/grafana-oss:8.2.0
+    environment:
+      GF_DATABASE_TYPE: postgres
+      GF_DATABASE_HOST: timescaledb:5432
+      GF_DATABASE_NAME: maindb
+      GF_DATABASE_USER: username
+      GF_DATABASE_PASSWORD: pwd123
+      GF_DATABASE_SSL_MODE: disable
+    ports:
+      - 3000:3000
+    volumes:
+      - grafana:/var/lib/grafana
+    networks:
+      - main
+    depends_on:
+      - timescaledb
+  telegraf:
+    container_name: telegraf_tutorial_metrics
+    image: telegraf:1.25
+    networks:
+      - main
+    ports:
+      - 8086:8086
+    volumes:
+      - ./telegraf/telegraf.conf:/etc/telegraf/telegraf.conf:ro
+  timescaledb:
+    image: timescale/timescaledb:latest-pg14
+    container_name: timescaledb_tutorial
+    environment:
+      POSTGRES_DB: maindb
+      POSTGRES_USER: username
+      POSTGRES_PASSWORD: pwd123
+    volumes:
+      - timescaledb:/var/lib/postgresql/data
+    networks:
+      - main
+    ports:
+      - 5432:5432
+
+volumes:
+  grafana:
+    driver: local
+  timescaledb:
+    driver: local
+networks:
+  main:
