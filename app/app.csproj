@@ -1,0 +1,16 @@
+<Project Sdk="Microsoft.NET.Sdk.Worker">
+
+  <PropertyGroup>
+    <TargetFramework>net7.0</TargetFramework>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <UserSecretsId>dotnet-app-4d98d41b-b687-4092-9286-1c6d8f5eeaab</UserSecretsId>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="App.Metrics.AspNetCore.All" Version="4.3.0" />
+    <PackageReference Include="App.Metrics.Formatters.InfluxDB" Version="4.3.0" />
+    <PackageReference Include="App.Metrics.Reporting.HTTP" Version="4.3.0" />
+    <PackageReference Include="Microsoft.Extensions.Hosting" Version="7.0.1" />
+  </ItemGroup>
+</Project>
