@@ -35,7 +35,6 @@ declare
 	from timescaledb_information.chunks c 
 	inner join public.tables_historify th on th.table_name = c.hypertable_name and c.hypertable_schema = th.schema_name  
 	where range_end < now() - interval '1d' * th.move_chunks_older_than_days
-	--and hypertable_name = 'smartcampaign_triggers' 
 	and th.enabled
 	and coalesce(chunk_tablespace, 'default') = coalesce(th.move_from_tablespace, 'default')
     -- o limit serve para duas funções:
