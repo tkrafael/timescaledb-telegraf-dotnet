@@ -36,6 +36,8 @@ services:
       POSTGRES_PASSWORD: pwd123
     volumes:
       - timescaledb:/var/lib/postgresql/data
+      - timescaledb_slow:/data/slow
+      - timescaledb_veryslow:/data/veryslow
     networks:
       - main
     ports:
@@ -45,6 +47,10 @@ volumes:
   grafana:
     driver: local
   timescaledb:
+    driver: local
+  timescaledb_slow:
+    driver: local
+  timescaledb_veryslow:
     driver: local
 networks:
   main:
