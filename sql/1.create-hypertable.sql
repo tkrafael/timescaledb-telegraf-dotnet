@@ -1,0 +1,1 @@
+SELECT create_hypertable('metrics.worker_executions_executions', 'time');

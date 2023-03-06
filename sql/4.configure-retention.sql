@@ -1,0 +1,1 @@
+SELECT add_retention_policy('metrics.worker_executions_executions', INTERVAL '30 days');
